@@ -87,6 +87,7 @@
 
 		.topbar-inner {
 			display: flex;
+			flex-wrap: wrap;
 			align-items: center;
 			justify-content: space-between;
 			gap: 20px;
@@ -129,11 +130,43 @@
 			font-size: 0.92rem;
 		}
 
+		.nav-toggle {
+			display: none;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+			padding: 12px 16px;
+			border-radius: 999px;
+			border: 1px solid rgba(255, 255, 255, 0.12);
+			background: rgba(255, 255, 255, 0.05);
+			color: var(--text);
+			font: inherit;
+			font-weight: 800;
+			cursor: pointer;
+		}
+
+		.nav-toggle-lines {
+			display: inline-grid;
+			gap: 4px;
+		}
+
+		.nav-toggle-lines span {
+			display: block;
+			width: 18px;
+			height: 2px;
+			border-radius: 999px;
+			background: currentColor;
+		}
+
 		.nav {
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: flex-end;
 			gap: 10px;
+		}
+
+		.nav-panel {
+			display: contents;
 		}
 
 		.nav a {
@@ -334,6 +367,42 @@
 			color: #dbe5ff;
 			font-size: 0.84rem;
 			margin-bottom: 12px;
+
+		@media (max-width: 920px) {
+			.topbar-inner {
+				align-items: start;
+			}
+
+			.nav-toggle {
+				display: inline-flex;
+				margin-inline-start: auto;
+			}
+
+			.nav {
+				width: 100%;
+				display: none;
+				flex-direction: column;
+				align-items: stretch;
+				gap: 8px;
+				padding-top: 6px;
+			}
+
+			.topbar.is-open .nav {
+				display: flex;
+			}
+
+			.nav a {
+				width: 100%;
+				text-align: center;
+				padding: 13px 16px;
+				border-radius: 16px;
+			}
+
+			.brand-text span {
+				display: block;
+				max-width: 30ch;
+			}
+		}
 		}
 
 		.stat-card strong {
@@ -547,23 +616,78 @@
 		}
 
 		@media (max-width: 760px) {
-			.topbar-inner,
 			.hero-actions,
-			.nav,
 			.section-title {
 				flex-direction: column;
 				align-items: stretch;
 			}
 
+			.topbar {
+				backdrop-filter: blur(14px);
+			}
+
+			.topbar-inner {
+				padding: 14px 0 12px;
+				gap: 14px;
+			}
+
+			.brand {
+				width: 100%;
+			}
+
+			.nav-toggle {
+				width: 100%;
+				justify-content: center;
+			}
+
 			.hero {
-				padding-top: 34px;
+				padding: 28px 0 24px;
 			}
 
 			.hero-card,
 			.section-card,
 			.panel {
-				padding: 22px;
+				padding: 18px;
 				border-radius: 24px;
+			}
+
+			.hero-card {
+				padding-top: 22px;
+			}
+
+			.hero h1 {
+				font-size: clamp(1.8rem, 9vw, 2.65rem);
+				line-height: 1.22;
+			}
+
+			.hero p {
+				font-size: 1rem;
+				line-height: 1.85;
+			}
+
+			.btn {
+				width: 100%;
+				justify-content: center;
+			}
+
+			.eyebrow {
+				width: fit-content;
+				font-size: 0.9rem;
+			}
+
+			.brand-mark {
+				width: 44px;
+				height: 44px;
+				font-size: 0.98rem;
+			}
+
+			.brand-text strong {
+				font-size: 0.96rem;
+			}
+
+			.brand-text span {
+				font-size: 0.86rem;
+				line-height: 1.5;
 			}
 
 			.hero-grid,
@@ -574,8 +698,57 @@
 				grid-template-columns: 1fr;
 			}
 
+			.stat-card,
+			.mini-card,
+			.role-card {
+				padding: 16px;
+			}
+
+			.section-title h2 {
+				font-size: 1.45rem;
+			}
+
+			.section-title .subtitle {
+				font-size: 0.97rem;
+			}
+
+			.nav a {
+				font-size: 0.95rem;
+			}
+
 			.timeline-item {
 				padding-right: 42px;
+			}
+
+			.timeline::before {
+				right: 16px;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.container {
+				width: min(calc(100% - 20px), var(--container));
+			}
+
+			.hero {
+				padding-top: 22px;
+			}
+
+			.hero-card,
+			.section-card,
+			.panel {
+				border-radius: 20px;
+			}
+
+			.highlights,
+			.metrics,
+			.grid-3,
+			.grid-2 {
+				gap: 12px;
+			}
+
+			.nav a {
+				padding: 12px 14px;
 			}
 		}
 	</style>
@@ -591,15 +764,21 @@
 						<span>منصة تعليمية متكاملة لإدارة التعليم والمال والتواصل</span>
 					</div>
 				</div>
-				<nav class="nav" aria-label="التنقل">
-					<a href="#overview">نظرة عامة</a>
-					<a href="#roles">الأدوار</a>
-					<a href="#modules">الوحدات</a>
-					<a href="#finance">المالية</a>
-					<a href="#chat">الشات</a>
-					<a href="#mobile">الموبايل</a>
-					<a href="#security">الأمان</a>
-					<a href="#delivery">المخرجات</a>
+				<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" id="navToggle">
+					<span class="nav-toggle-lines" aria-hidden="true"><span></span><span></span><span></span></span>
+					<span>القائمة</span>
+				</button>
+				<nav class="nav" aria-label="التنقل" id="primary-nav">
+					<div class="nav-panel">
+						<a href="#overview">نظرة عامة</a>
+						<a href="#roles">الأدوار</a>
+						<a href="#modules">الوحدات</a>
+						<a href="#finance">المالية</a>
+						<a href="#chat">الشات</a>
+						<a href="#mobile">الموبايل</a>
+						<a href="#security">الأمان</a>
+						<a href="#delivery">المخرجات</a>
+					</div>
 				</nav>
 			</div>
 		</header>
@@ -1125,5 +1304,26 @@
 			</div>
 		</footer>
 	</div>
+	<script>
+		const topbar = document.querySelector('.topbar');
+		const navToggle = document.getElementById('navToggle');
+		const navLinks = document.querySelectorAll('#primary-nav a');
+
+		if (topbar && navToggle) {
+			navToggle.addEventListener('click', () => {
+				const isOpen = topbar.classList.toggle('is-open');
+				navToggle.setAttribute('aria-expanded', String(isOpen));
+			});
+
+			navLinks.forEach((link) => {
+				link.addEventListener('click', () => {
+					if (window.innerWidth <= 920) {
+						topbar.classList.remove('is-open');
+						navToggle.setAttribute('aria-expanded', 'false');
+					}
+				});
+			});
+		}
+	</script>
 </body>
 </html>
