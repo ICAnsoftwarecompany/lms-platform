@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="ملف تعريفي احترافي لمنصة تعليمية متكاملة لإدارة العملية التعليمية والمالية والتواصل الداخلي." />
+	<title>الملف التعريفي لمنصة LMS المتكاملة</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--bg: #07111f;
+			--bg-2: #0d1d34;
+			--card: rgba(10, 20, 37, 0.72);
+			--card-strong: rgba(13, 28, 51, 0.92);
+			--line: rgba(255, 255, 255, 0.12);
+			--text: #f5f7fb;
+			--muted: #b5c0d8;
+			--soft: #8ea0c3;
+			--brand: #58d6c9;
+			--brand-2: #7c8cff;
+			--accent: #ffbf69;
+			--danger: #ff7b8f;
+			--shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+			--radius-xl: 30px;
+			--radius-lg: 22px;
+			--radius-md: 16px;
+			--container: 1180px;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			margin: 0;
+			font-family: "Tajawal", "Cairo", sans-serif;
+			color: var(--text);
+			background:
+				radial-gradient(circle at top right, rgba(124, 140, 255, 0.32), transparent 26%),
+				radial-gradient(circle at 12% 18%, rgba(88, 214, 201, 0.18), transparent 22%),
+				radial-gradient(circle at 85% 82%, rgba(255, 191, 105, 0.14), transparent 18%),
+				linear-gradient(180deg, #05101e 0%, #0a1730 52%, #07111f 100%);
+			min-height: 100vh;
+			overflow-x: hidden;
+		}
+
+		body::before {
+			content: "";
+			position: fixed;
+			inset: 0;
+			pointer-events: none;
+			background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+			background-size: 48px 48px;
+			mask-image: radial-gradient(circle at center, black 55%, transparent 100%);
+			opacity: 0.28;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		.page {
+			position: relative;
+			z-index: 1;
+		}
+
+		.container {
+			width: min(calc(100% - 32px), var(--container));
+			margin: 0 auto;
+		}
+
+		.topbar {
+			position: sticky;
+			top: 0;
+			z-index: 20;
+			backdrop-filter: blur(18px);
+			background: rgba(5, 11, 21, 0.55);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+		}
+
+		.topbar-inner {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 20px;
+			padding: 16px 0;
+		}
+
+		.brand {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			min-width: 0;
+		}
+
+		.brand-mark {
+			width: 48px;
+			height: 48px;
+			border-radius: 16px;
+			background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 55%, #9cf0d9 100%);
+			box-shadow: 0 18px 40px rgba(88, 214, 201, 0.28);
+			display: grid;
+			place-items: center;
+			color: #05101e;
+			font-weight: 900;
+			font-size: 1.05rem;
+		}
+
+		.brand-text {
+			display: grid;
+			gap: 2px;
+			min-width: 0;
+		}
+
+		.brand-text strong {
+			font-family: "Cairo", sans-serif;
+			font-size: 1rem;
+		}
+
+		.brand-text span {
+			color: var(--muted);
+			font-size: 0.92rem;
+		}
+
+		.nav {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+			gap: 10px;
+		}
+
+		.nav a {
+			color: var(--muted);
+			font-size: 0.94rem;
+			padding: 10px 14px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.04);
+			border: 1px solid transparent;
+			transition: 180ms ease;
+		}
+
+		.nav a:hover {
+			color: var(--text);
+			border-color: rgba(255, 255, 255, 0.1);
+			transform: translateY(-1px);
+		}
+
+		.hero {
+			padding: 64px 0 34px;
+		}
+
+		.hero-grid {
+			display: grid;
+			grid-template-columns: 1.12fr 0.88fr;
+			gap: 24px;
+			align-items: stretch;
+		}
+
+		.hero-card,
+		.panel,
+		.section-card,
+		.mini-card,
+		.stat-card {
+			border: 1px solid var(--line);
+			background: linear-gradient(180deg, rgba(14, 29, 54, 0.84) 0%, rgba(8, 16, 30, 0.88) 100%);
+			box-shadow: var(--shadow);
+			backdrop-filter: blur(18px);
+		}
+
+		.hero-card {
+			border-radius: 34px;
+			padding: 34px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.hero-card::after {
+			content: "";
+			position: absolute;
+			inset: auto -90px -110px auto;
+			width: 300px;
+			height: 300px;
+			border-radius: 50%;
+			background: radial-gradient(circle, rgba(124, 140, 255, 0.32), transparent 72%);
+			pointer-events: none;
+		}
+
+		.eyebrow {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 10px 14px;
+			border-radius: 999px;
+			border: 1px solid rgba(88, 214, 201, 0.22);
+			color: #c9fff8;
+			background: rgba(88, 214, 201, 0.08);
+			font-weight: 700;
+			margin-bottom: 18px;
+		}
+
+		.hero h1 {
+			font-family: "Cairo", sans-serif;
+			margin: 0;
+			line-height: 1.15;
+			font-size: clamp(2rem, 4vw, 4.25rem);
+			letter-spacing: -0.04em;
+		}
+
+		.hero h1 span {
+			background: linear-gradient(90deg, #ffffff 0%, #b7f8ee 40%, #9fa9ff 100%);
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+		}
+
+		.hero p {
+			margin: 18px 0 0;
+			color: var(--muted);
+			font-size: 1.08rem;
+			line-height: 1.9;
+			max-width: 60ch;
+		}
+
+		.hero-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 12px;
+			margin-top: 28px;
+		}
+
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			padding: 13px 18px;
+			border-radius: 999px;
+			font-weight: 800;
+			border: 1px solid transparent;
+			transition: 180ms ease;
+			cursor: default;
+		}
+
+		.btn-primary {
+			background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+			color: #06111d;
+			box-shadow: 0 18px 32px rgba(124, 140, 255, 0.26);
+		}
+
+		.btn-secondary {
+			background: rgba(255, 255, 255, 0.05);
+			color: var(--text);
+			border-color: rgba(255, 255, 255, 0.12);
+		}
+
+		.btn:hover {
+			transform: translateY(-1px);
+		}
+
+		.hero-stack {
+			display: grid;
+			gap: 16px;
+		}
+
+		.panel {
+			border-radius: 28px;
+			padding: 22px;
+		}
+
+		.panel h3,
+		.section-title h2 {
+			margin: 0;
+			font-family: "Cairo", sans-serif;
+			letter-spacing: -0.03em;
+		}
+
+		.panel p,
+		.section-title p {
+			margin: 10px 0 0;
+			color: var(--muted);
+			line-height: 1.8;
+		}
+
+		.metrics {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 14px;
+			margin-top: 18px;
+		}
+
+		.metric {
+			padding: 16px;
+			border-radius: 20px;
+			background: rgba(255, 255, 255, 0.05);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+		}
+
+		.metric strong {
+			display: block;
+			font-size: 1.36rem;
+			font-family: "Cairo", sans-serif;
+		}
+
+		.metric span {
+			color: var(--muted);
+			font-size: 0.94rem;
+		}
+
+		.highlights {
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: 14px;
+			margin-top: 24px;
+		}
+
+		.stat-card {
+			border-radius: 22px;
+			padding: 18px;
+		}
+
+		.stat-card .tag {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 6px 10px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.05);
+			color: #dbe5ff;
+			font-size: 0.84rem;
+			margin-bottom: 12px;
+		}
+
+		.stat-card strong {
+			display: block;
+			font-size: 1.6rem;
+			font-family: "Cairo", sans-serif;
+			margin-bottom: 6px;
+		}
+
+		.stat-card span {
+			color: var(--muted);
+			line-height: 1.65;
+			font-size: 0.95rem;
+		}
+
+		.section {
+			padding: 18px 0 8px;
+		}
+
+		.section-card {
+			border-radius: 28px;
+			padding: 26px;
+		}
+
+		.section-title {
+			display: flex;
+			align-items: end;
+			justify-content: space-between;
+			gap: 16px;
+			margin-bottom: 20px;
+		}
+
+		.section-title h2 {
+			font-size: clamp(1.5rem, 2.3vw, 2.4rem);
+		}
+
+		.section-title .subtitle {
+			color: var(--soft);
+			max-width: 60ch;
+			line-height: 1.7;
+		}
+
+		.grid-3 {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 16px;
+		}
+
+		.grid-2 {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 16px;
+		}
+
+		.mini-card {
+			border-radius: 22px;
+			padding: 20px;
+			background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.035));
+		}
+
+		.mini-card h3 {
+			margin: 0 0 10px;
+			font-size: 1.06rem;
+			font-family: "Cairo", sans-serif;
+		}
+
+		.mini-card p,
+		.mini-card li,
+		.panel li,
+		.timeline li {
+			color: var(--muted);
+			line-height: 1.8;
+		}
+
+		.mini-card ul,
+		.panel ul,
+		.timeline ul,
+		.checklist {
+			margin: 0;
+			padding: 0 18px 0 0;
+		}
+
+		.role-card {
+			border-radius: 24px;
+			padding: 18px;
+			background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+			border: 1px solid rgba(255, 255, 255, 0.08);
+		}
+
+		.role-head {
+			display: flex;
+			justify-content: space-between;
+			gap: 12px;
+			align-items: start;
+			margin-bottom: 14px;
+		}
+
+		.role-name {
+			display: grid;
+			gap: 4px;
+		}
+
+		.role-name strong {
+			font-family: "Cairo", sans-serif;
+			font-size: 1.08rem;
+		}
+
+		.role-name span,
+		.chip-list span {
+			color: var(--muted);
+			font-size: 0.92rem;
+		}
+
+		.badge {
+			padding: 7px 12px;
+			border-radius: 999px;
+			font-size: 0.84rem;
+			background: rgba(88, 214, 201, 0.12);
+			color: #bffcf3;
+			border: 1px solid rgba(88, 214, 201, 0.22);
+			white-space: nowrap;
+		}
+
+		.chip-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin-top: 14px;
+		}
+
+		.chip-list span {
+			padding: 8px 12px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.05);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+		}
+
+		.timeline {
+			position: relative;
+		}
+
+		.timeline::before {
+			content: "";
+			position: absolute;
+			top: 14px;
+			bottom: 14px;
+			right: 18px;
+			width: 2px;
+			background: linear-gradient(180deg, rgba(88, 214, 201, 0.9), rgba(124, 140, 255, 0.5));
+		}
+
+		.timeline-item {
+			position: relative;
+			padding: 0 48px 0 0;
+			margin-bottom: 18px;
+		}
+
+		.timeline-item::before {
+			content: "";
+			position: absolute;
+			top: 9px;
+			right: 11px;
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, var(--brand), var(--brand-2));
+			box-shadow: 0 0 0 6px rgba(88, 214, 201, 0.09);
+		}
+
+		.timeline-item strong {
+			display: block;
+			margin-bottom: 8px;
+			font-size: 1.02rem;
+		}
+
+		.callout {
+			margin-top: 18px;
+			border-radius: 24px;
+			padding: 18px 20px;
+			background: linear-gradient(135deg, rgba(88, 214, 201, 0.12), rgba(124, 140, 255, 0.12));
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			color: #defcf8;
+			line-height: 1.9;
+		}
+
+		.footer {
+			padding: 30px 0 50px;
+			color: var(--muted);
+			text-align: center;
+		}
+
+		.footer strong {
+			color: var(--text);
+			display: block;
+			margin-bottom: 8px;
+			font-family: "Cairo", sans-serif;
+		}
+
+		@media (max-width: 1080px) {
+			.hero-grid,
+			.grid-3,
+			.grid-2,
+			.highlights {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+
+			.section-title {
+				flex-direction: column;
+				align-items: start;
+			}
+		}
+
+		@media (max-width: 760px) {
+			.topbar-inner,
+			.hero-actions,
+			.nav,
+			.section-title {
+				flex-direction: column;
+				align-items: stretch;
+			}
+
+			.hero {
+				padding-top: 34px;
+			}
+
+			.hero-card,
+			.section-card,
+			.panel {
+				padding: 22px;
+				border-radius: 24px;
+			}
+
+			.hero-grid,
+			.grid-3,
+			.grid-2,
+			.highlights,
+			.metrics {
+				grid-template-columns: 1fr;
+			}
+
+			.timeline-item {
+				padding-right: 42px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<header class="topbar">
+			<div class="container topbar-inner">
+				<div class="brand">
+					<div class="brand-mark">LMS</div>
+					<div class="brand-text">
+						<strong>ملف تعريفي للمنصة</strong>
+						<span>منصة تعليمية متكاملة لإدارة التعليم والمال والتواصل</span>
+					</div>
+				</div>
+				<nav class="nav" aria-label="التنقل">
+					<a href="#overview">نظرة عامة</a>
+					<a href="#roles">الأدوار</a>
+					<a href="#modules">الوحدات</a>
+					<a href="#finance">المالية</a>
+					<a href="#chat">الشات</a>
+					<a href="#mobile">الموبايل</a>
+					<a href="#security">الأمان</a>
+					<a href="#delivery">المخرجات</a>
+				</nav>
+			</div>
+		</header>
+
+		<main>
+			<section class="hero">
+				<div class="container hero-grid">
+					<article class="hero-card" id="overview">
+						<div class="eyebrow">وثيقة عرض مشروع احترافية</div>
+						<h1>منصة تعليمية <span>متكاملة</span> تدير العملية التعليمية والمالية والتواصل الداخلي من مكان واحد</h1>
+						<p>
+							هذه المنصة ليست مجرد نظام محتوى أو إدارة كورسات، بل بنية تشغيلية كاملة لإدارة مدرسة أو أكاديمية تعليمية عبر الويب والموبايل،
+							مع لوحات تحكم مخصصة، صلاحيات دقيقة، شات داخلي، وإدارة مالية قابلة للتتبع والتوسع.
+						</p>
+						<div class="hero-actions">
+							<a class="btn btn-primary" href="#delivery">استعراض المخرجات</a>
+							<a class="btn btn-secondary" href="#modules">استعراض الوحدات الرئيسية</a>
+						</div>
+
+						<div class="highlights">
+							<div class="stat-card">
+								<div class="tag">إدارة شاملة</div>
+								<strong>منصة واحدة</strong>
+								<span>تجمع المناهج، الكورسات، الحصص، الطلاب، المدرسين، أولياء الأمور، الشركاء، والدعم الفني.</span>
+							</div>
+							<div class="stat-card">
+								<div class="tag">Web + Mobile</div>
+								<strong>نفس المنطق</strong>
+								<span>نفس الـ API ونفس الصلاحيات لتجربة متسقة على المتصفح وتطبيق Android و iOS.</span>
+							</div>
+							<div class="stat-card">
+								<div class="tag">Real-time</div>
+								<strong>شات لحظي</strong>
+								<span>تواصل داخلي بين جميع الأدوار مع دعم WebSocket أو Pusher وبديل Polling عند الحاجة.</span>
+							</div>
+							<div class="stat-card">
+								<div class="tag">Finance-ready</div>
+								<strong>حركة مالية دقيقة</strong>
+								<span>إدارة مدفوعات الطلاب والمدرسين والشركاء والبنوك والمصروفات والتحويلات من مكان واحد.</span>
+							</div>
+						</div>
+					</article>
+
+					<aside class="hero-stack">
+						<section class="panel">
+							<h3>الملخص التنفيذي</h3>
+							<p>
+								المقترح يهدف إلى تنفيذ نظام تعليمي وإداري شامل يرافق دورة العمل كاملة: من التسجيل والاشتراك ومتابعة الحصص والاختبارات،
+								وصولاً إلى التقارير المالية والتواصل الداخلي والتوسع المستقبلي على الموبايل.
+							</p>
+							<div class="metrics">
+								<div class="metric">
+									<strong>7+</strong>
+									<span>أدوار رئيسية داخل النظام</span>
+								</div>
+								<div class="metric">
+									<strong>15</strong>
+									<span>محوراً ووحدة تشغيلية أساسية</span>
+								</div>
+								<div class="metric">
+									<strong>2</strong>
+									<span>منصات تشغيل: ويب وموبايل</span>
+								</div>
+								<div class="metric">
+									<strong>1</strong>
+									<span>مصدر بيانات وصلاحيات موحد</span>
+								</div>
+							</div>
+						</section>
+
+						<section class="panel">
+							<h3>القيمة المقدمة</h3>
+							<ul class="checklist">
+								<li>توحيد جميع العمليات التعليمية والإدارية داخل منصة رقمية واحدة.</li>
+								<li>لوحات تحكم مخصصة حسب الدور مع مسارات واضحة لكل مستخدم.</li>
+								<li>شفافية تشغيلية ومالية أعلى مع سجلات وتفاصيل يمكن تتبعها.</li>
+								<li>جاهزية للتوسع المستقبلي بدون إعادة بناء المنطق الأساسي.</li>
+							</ul>
+						</section>
+					</aside>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="container section-card">
+					<div class="section-title">
+						<div>
+							<h2>فكرة المشروع والقيمة التشغيلية</h2>
+							<p class="subtitle">نظام LMS متكامل موجه لإدارة مؤسسة تعليمية كاملة، وليس مجرد منصة عرض محتوى.</p>
+						</div>
+					</div>
+					<div class="grid-3">
+						<div class="mini-card">
+							<h3>الإدارة</h3>
+							<p>رؤية موحدة لكل المستخدمين والعمليات التعليمية والمالية من لوحة واحدة.</p>
+						</div>
+						<div class="mini-card">
+							<h3>التعليم</h3>
+							<p>تنظيم المناهج إلى مستويات ووحدات ودروس واختبارات ومهام مع تتبع شامل للتقدم.</p>
+						</div>
+						<div class="mini-card">
+							<h3>التواصل</h3>
+							<p>شات داخلي لحظي يقلل الاعتماد على القنوات الخارجية ويضمن سياقًا واضحًا للمحادثات.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="roles">
+				<div class="container section-card">
+					<div class="section-title">
+						<div>
+							<h2>الأدوار وأنواع المستخدمين</h2>
+							<p class="subtitle">كل مستخدم يرى فقط الصفحات والعمليات المناسبة له، ما يعزز الأمان وسهولة الاستخدام.</p>
+						</div>
+					</div>
+					<div class="grid-3">
+						<div class="role-card">
+							<div class="role-head">
+								<div class="role-name">
+									<strong>Admin</strong>
+									<span>إدارة كاملة للمنصة والبيانات والصلاحيات والمالية</span>
+								</div>
+								<div class="badge">الدور الأعلى</div>
+							</div>
+							<div class="chip-list">
+								<span>الحسابات</span><span>المناهج</span><span>الكورسات</span><span>الطلاب</span><span>المدرسون</span><span>الشركاء</span><span>المالية</span><span>الشات</span>
+							</div>
+						</div>
+						<div class="role-card">
+							<div class="role-head">
+								<div class="role-name">
+									<strong>Student</strong>
+									<span>متابعة الكورسات والحصص والواجبات والاختبارات والتقييمات</span>
+								</div>
+								<div class="badge">التعلم اليومي</div>
+							</div>
+							<div class="chip-list">
+								<span>كورساتي</span><span>مهامي</span><span>اختباراتي</span><span>تقييمي</span><span>المناهج المتاحة</span><span>الشات</span>
+							</div>
+						</div>
+						<div class="role-card">
+							<div class="role-head">
+								<div class="role-name">
+									<strong>Teacher</strong>
+									<span>إدارة الحصص وتسجيل الحضور وتقييم الطلاب</span>
+								</div>
+								<div class="badge">إدارة الحصص</div>
+							</div>
+							<div class="chip-list">
+								<span>لوحة المدرس</span><span>كورساتي</span><span>حصصي</span><span>مهام الطلاب</span><span>المستحقات</span><span>الشات</span>
+							</div>
+						</div>
+						<div class="role-card">
+							<div class="role-head">
+								<div class="role-name">
+									<strong>Parent</strong>
+									<span>متابعة الأبناء وطلب كورسات جديدة ومراجعة الأداء</span>
+								</div>
+								<div class="badge">متابعة الأسر</div>
+							</div>
+							<div class="chip-list">
+								<span>لوحة ولي الأمر</span><span>الأبناء</span><span>طلب كورس</span><span>تقارير الطالب</span><span>المناهج المتاحة</span><span>الشات</span>
+							</div>
+						</div>
+						<div class="role-card">
+							<div class="role-head">
+								<div class="role-name">
+									<strong>Partner</strong>
+									<span>متابعة البيانات والمجموعات والطلاب والحساب المالي</span>
+								</div>
+								<div class="badge">شفافية مالية</div>
+							</div>
+							<div class="chip-list">
+								<span>الرصيد</span><span>الكورسات</span><span>الطلاب</span><span>الجروبات</span><span>العقود</span><span>الشات</span>
+							</div>
+						</div>
+						<div class="role-card">
+							<div class="role-head">
+								<div class="role-name">
+									<strong>Support</strong>
+									<span>متابعة الكورسات والدعم والرد على الاستفسارات</span>
+								</div>
+								<div class="badge">الدعم التشغيلي</div>
+							</div>
+							<div class="chip-list">
+								<span>لوحة الدعم</span><span>الحضور</span><span>الجلسات</span><span>الملاحظات</span><span>الشات</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="modules">
+				<div class="container section-card">
+					<div class="section-title">
+						<div>
+							<h2>الوحدات الرئيسية في النظام</h2>
+							<p class="subtitle">كل وحدة هنا مستخرجة من تفاصيل المشروع، ومصممة لتوضح نطاق العمل الكامل بشكل مهني.</p>
+						</div>
+					</div>
+					<div class="grid-2">
+						<div class="mini-card">
+							<h3>لوحة مسؤول النظام</h3>
+							<ul>
+								<li>إدارة الحسابات وإنشاء الأدوار المختلفة.</li>
+								<li>إدارة المناهج من إنشاء إلى مستويات ووحدات ودروس واختبارات.</li>
+								<li>إدارة الكورسات والطلاب والمدرسين والشركاء والحسابات.</li>
+								<li>متابعة طلبات تجميد الحصص والتقييمات والمهام.</li>
+							</ul>
+						</div>
+						<div class="mini-card">
+							<h3>رحلة الطالب</h3>
+							<ul>
+								<li>كورساتي مع الحصص القادمة والمنتهية ومحتوى الدروس.</li>
+								<li>مهام مع رفع الحل وتعديل الملفات ومتابعة تقييم المدرس.</li>
+								<li>اختبارات متاحة مع مراجعة المحاولات السابقة.</li>
+								<li>تقييمات للحصص والمدرسين والشات عند الحاجة.</li>
+							</ul>
+						</div>
+						<div class="mini-card">
+							<h3>رحلة المدرس</h3>
+							<ul>
+								<li>لوحة تعرض الكورسات والحصص والطلاب.</li>
+								<li>بدء الحصة وتسجيل الحضور وإضافة الملاحظات.</li>
+								<li>تقييم مهام الطلاب وتعديل التقييمات.</li>
+								<li>متابعة المستحقات المالية والتواصل الداخلي.</li>
+							</ul>
+						</div>
+						<div class="mini-card">
+							<h3>رحلة ولي الأمر</h3>
+							<ul>
+								<li>إضافة الأبناء أو مراجعة بياناتهم الحالية.</li>
+								<li>تصفح المناهج والخطط التعليمية المتاحة.</li>
+								<li>طلب كورس جديد وتحديد اليوم والوقت والدفع.</li>
+								<li>مراجعة تقارير الطالب والتواصل مع الإدارة.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="callout">
+						الرحلة التشغيلية هنا متسقة: الطالب يتعلم، المدرس يدير الجلسة، ولي الأمر يتابع، الإدارة تشرف، والدعم يتدخل عند الحاجة، وكل ذلك داخل منصة واحدة.
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="finance">
+				<div class="container section-card">
+					<div class="section-title">
+						<div>
+							<h2>النظام المالي بالتفصيل</h2>
+							<p class="subtitle">تم تصميم البنية المالية لتكون مركزية وقابلة للتتبع، مع سجل واضح لكل حركة مالية.</p>
+						</div>
+					</div>
+					<div class="grid-3">
+						<div class="mini-card">
+							<h3>حسابات المدرسين</h3>
+							<ul>
+								<li>إجمالي الرصيد والمستحقات والمدفوعات.</li>
+								<li>إضافة دفعات وربطها بالبنك والتاريخ والوصف والمرفقات.</li>
+								<li>احتساب المستحقات حسب الساعة أو الحصة أو العقد أو النسبة.</li>
+								<li>ربط المستحقات بجلسات فعلية مغلقة.</li>
+							</ul>
+						</div>
+						<div class="mini-card">
+							<h3>حسابات الشركاء - التعاون</h3>
+							<ul>
+								<li>عرض الرصيد الكلي والمدفوع والمتبقي لكل شريك.</li>
+								<li>إضافة دفعة مع البنك والعملة والتاريخ والوصف والمرفق.</li>
+								<li>تقارير مالية تشمل الدائن والمدين وصافي الحساب.</li>
+								<li>إدارة المعاملات المالية الخاصة بالشريك من لوحة الإدارة.</li>
+							</ul>
+						</div>
+						<div class="mini-card">
+							<h3>البنوك والتحويلات</h3>
+							<ul>
+								<li>إدارة الخزن أو الحسابات البنكية وتفاصيل كل بنك.</li>
+								<li>تنفيذ تحويلات بين البنوك مع مصدر ووجهة العملية.</li>
+								<li>إمكانية عكس التحويل عند الحاجة مع حفظ الأثر.</li>
+								<li>ربط المعاملات بالبنوك لضمان تتبع دقيق للتدفقات.</li>
+							</ul>
+						</div>
+						<div class="mini-card">
+							<h3>مدفوعات الطلاب والاسترداد</h3>
+							<ul>
+								<li>تسجيل المعاملات المرتبطة بالطالب والكورس والبنك.</li>
+								<li>دعم الاسترداد مع السبب والتاريخ والمرفقات.</li>
+								<li>عرض معاملات الكورس والطلاب المرتبطين به.</li>
+							</ul>
+						</div>
+						<div class="mini-card">
+							<h3>المصروفات والتقارير العامة</h3>
+							<ul>
+								<li>تسجيل المصروفات التشغيلية أو الإدارية.</li>
+								<li>تصنيف المعاملات كإيداع أو سحب أو مصروف أو دفع لطرف محدد.</li>
+								<li>تقارير عامة تعرض الداخل والخارج والصافي خلال فترة محددة.</li>
+							</ul>
+						</div>
+						<div class="mini-card">
+							<h3>ملخص الوحدات المالية</h3>
+							<ul>
+								<li>مدفوعات المدرسين: المبلغ، نوع الدفع، الشهر المالي، الحالة.</li>
+								<li>مدفوعات الشركاء: الشريك، البنك، العملة، الوصف، الملف.</li>
+								<li>مدفوعات الطلاب: الطالب، الكورس، البنك، العملة، المرفق.</li>
+								<li>التحويلات والتقارير: الداخل، الخارج، الصافي، التفاصيل.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="chat">
+				<div class="container section-card">
+					<div class="section-title">
+						<div>
+							<h2>نظام الشات والتواصل الداخلي</h2>
+							<p class="subtitle">جزء أساسي من المنصة لتقليل القنوات الخارجية وتوحيد التواصل بين الإدارة وجميع الأطراف.</p>
+						</div>
+					</div>
+					<div class="grid-2">
+						<div class="mini-card">
+							<h3>أنواع المحادثات</h3>
+							<ul>
+								<li>محادثات فردية بين مستخدمين حسب الصلاحيات.</li>
+								<li>محادثات جماعية تضم أكثر من طرف.</li>
+								<li>محادثات دعم بين المستخدم وفريق الدعم.</li>
+								<li>محادثات إدارية بين الإدارة والمدرسين أو الشركاء أو الدعم.</li>
+							</ul>
+						</div>
+						<div class="mini-card">
+							<h3>مكونات الواجهة</h3>
+							<ul>
+								<li>Chat Sidebar لعرض القائمة والبحث والرسائل غير المقروءة.</li>
+								<li>Chat Window لعرض الرسائل زمنياً.</li>
+								<li>Chat Input للكتابة والإرسال وإرفاق الملفات.</li>
+								<li>Floating Chat Button للدخول السريع مع عداد الرسائل.</li>
+							</ul>
+						</div>
+						<div class="mini-card">
+							<h3>آلية العمل</h3>
+							<ol class="timeline" style="list-style:none; padding-right:0;">
+								<li class="timeline-item"><strong>1. تحديد المسار</strong> يتم جلب المحادثات حسب نوع المستخدم والصلاحيات.</li>
+								<li class="timeline-item"><strong>2. تحميل الرسائل</strong> عند فتح المحادثة يتم جلب الرسائل السابقة وترتيبها زمنياً.</li>
+								<li class="timeline-item"><strong>3. البث اللحظي</strong> الرسائل الجديدة تُحفظ ثم تُبث للطرف الآخر فوراً.</li>
+								<li class="timeline-item"><strong>4. الاحتياط</strong> في حال تعذر الاتصال اللحظي يعمل Polling كبديل.</li>
+							</ol>
+						</div>
+						<div class="mini-card">
+							<h3>الصلاحيات المقترحة</h3>
+							<ul>
+								<li>Admin: مع جميع الأدوار وإدارة المجموعات.</li>
+								<li>Student: مع الدعم والمدرسين والإدارة عند الحاجة.</li>
+								<li>Teacher: مع الإدارة والدعم وطلاب الكورسات.</li>
+								<li>Parent / Partner / Support: حسب نطاق كل حالة تشغيلية.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="mobile">
+				<div class="container section-card">
+					<div class="section-title">
+						<div>
+							<h2>نسخة تطبيق الموبايل</h2>
+							<p class="subtitle">البنية المقترحة تخدم Android و iOS من نفس الـ API ونفس منطق الصلاحيات، بدل بناء نسخة منفصلة.</p>
+						</div>
+					</div>
+					<div class="grid-2">
+						<div class="panel" style="margin:0;">
+							<h3>خصائص تطبيق الموبايل</h3>
+							<ul>
+								<li>تسجيل الدخول والتسجيل وتأكيد OTP من الهاتف.</li>
+								<li>لوحات مبسطة لكل نوع مستخدم.</li>
+								<li>عرض الكورسات والحصص والاختبارات والمهام للطلاب.</li>
+								<li>متابعة الأبناء وطلب الكورسات لأولياء الأمور.</li>
+								<li>إدارة الحصص وتسجيل الحضور للمدرسين من الهاتف.</li>
+								<li>متابعة الرصيد والتقارير للشركاء.</li>
+								<li>استقبال تنبيهات الرسائل والعمل داخل الشات الداخلي.</li>
+							</ul>
+						</div>
+						<div class="panel" style="margin:0;">
+							<h3>رسالة مهمة للعميل</h3>
+							<p>
+								الهدف ليس بناء واجهة ويب فقط، بل تأسيس نظام يخدم الويب والموبايل بنفس القاعدة التشغيلية، ما يقلل التكرار ويرفع الاستقرار ويجعل التوسع لاحقاً أسهل.
+							</p>
+							<div class="callout">
+								الهوية البصرية في هذه الصفحة تحاكي فكرة المنصة نفسها: منصة مؤسسية، منظمة، عالية الوضوح، وقابلة للتوسع من دون فقدان الانطباع الاحترافي.
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="security">
+				<div class="container section-card">
+					<div class="section-title">
+						<div>
+							<h2>الأمان والصلاحيات</h2>
+							<p class="subtitle">يتم فصل الصلاحيات وحماية المسارات لضمان وصول كل مستخدم لما يخصه فقط.</p>
+						</div>
+					</div>
+					<div class="grid-3">
+						<div class="mini-card">
+							<h3>المصادقة</h3>
+							<ul>
+								<li>تسجيل دخول وحفظ Token للمستخدم.</li>
+								<li>توجيه تلقائي بعد تسجيل الدخول حسب نوع الحساب.</li>
+								<li>إرسال API Password وفق آلية النظام الحالية.</li>
+							</ul>
+						</div>
+						<div class="mini-card">
+							<h3>حماية البيانات</h3>
+							<ul>
+								<li>حماية المسارات من الوصول غير المصرح به.</li>
+								<li>التحقق من البيانات قبل الإرسال إلى الـ API.</li>
+								<li>تسجيل العمليات المهمة مثل المدفوعات والتحويلات والتعديلات المالية.</li>
+							</ul>
+						</div>
+						<div class="mini-card">
+							<h3>فصل الصلاحيات</h3>
+							<ul>
+								<li>Admin و Student و Teacher و Support و Parent و Partner.</li>
+								<li>كل دور يرى صفحاته وبياناته فقط حسب الصلاحيات.</li>
+								<li>تقليل الأخطاء التشغيلية وتحسين تجربة الاستخدام.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="container section-card">
+					<div class="section-title">
+						<div>
+							<h2>سيناريوهات التشغيل الرئيسية</h2>
+							<p class="subtitle">هذه السيناريوهات توضح كيف تدور العمليات الأساسية داخل النظام بشكل عملي ومترابط.</p>
+						</div>
+					</div>
+					<div class="grid-2">
+						<div class="mini-card">
+							<h3>رحلة الطالب الجديد</h3>
+							<ol class="timeline" style="list-style:none; padding-right:0;">
+								<li class="timeline-item"><strong>1.</strong> إنشاء حساب بالبريد أو رقم الهاتف.</li>
+								<li class="timeline-item"><strong>2.</strong> استقبال OTP للتحقق من الحساب.</li>
+								<li class="timeline-item"><strong>3.</strong> تسجيل الدخول ثم الانتقال إلى الكورسات أو المناهج المتاحة.</li>
+								<li class="timeline-item"><strong>4.</strong> اختيار المنهج أو الخطة ومتابعة الحصص والاختبارات والمهام.</li>
+							</ol>
+						</div>
+						<div class="mini-card">
+							<h3>رحلة ولي الأمر</h3>
+							<ol class="timeline" style="list-style:none; padding-right:0;">
+								<li class="timeline-item"><strong>1.</strong> الدخول إلى لوحة التحكم.</li>
+								<li class="timeline-item"><strong>2.</strong> إنشاء حساب طالب لأحد الأبناء أو مراجعة الأبناء الحاليين.</li>
+								<li class="timeline-item"><strong>3.</strong> تصفح المناهج والخطط المتاحة.</li>
+								<li class="timeline-item"><strong>4.</strong> اختيار الطالب والخطة واليوم والوقت وطريقة الدفع ثم الإرسال.</li>
+							</ol>
+						</div>
+						<div class="mini-card">
+							<h3>رحلة الإدارة في إنشاء منهج وخطة</h3>
+							<ol class="timeline" style="list-style:none; padding-right:0;">
+								<li class="timeline-item"><strong>1.</strong> إنشاء منهج جديد وتحديد البيانات الأساسية.</li>
+								<li class="timeline-item"><strong>2.</strong> إضافة المستويات والوحدات والدروس والاختبارات.</li>
+								<li class="timeline-item"><strong>3.</strong> إضافة خطط تسويقية مرتبطة بالمنهج.</li>
+								<li class="timeline-item"><strong>4.</strong> تحديد الاسم والنوع وطريقة الحضور والسعر التعليمي والمميزات.</li>
+							</ol>
+						</div>
+						<div class="mini-card">
+							<h3>رحلة مالية مختصرة</h3>
+							<ol class="timeline" style="list-style:none; padding-right:0;">
+								<li class="timeline-item"><strong>1.</strong> تسجيل معاملات الطلاب أو الشركاء أو المدرسين من لوحة الإدارة.</li>
+								<li class="timeline-item"><strong>2.</strong> ربط كل معاملة ببنك أو خزنة وتاريخ ووصف وملف عند الحاجة.</li>
+								<li class="timeline-item"><strong>3.</strong> التقارير تعرض الداخل والخارج والصافي خلال فترة محددة.</li>
+								<li class="timeline-item"><strong>4.</strong> مراجعة تفاصيل كل طرف ودفعاته وحركاته المالية.</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="delivery">
+				<div class="container section-card">
+					<div class="section-title">
+						<div>
+							<h2>المخرجات النهائية ومعايير القبول</h2>
+							<p class="subtitle">هذه هي النتيجة المطلوبة من التنفيذ كما وردت في المستند، بصياغة واضحة وقابلة للتقديم للعميل.</p>
+						</div>
+					</div>
+					<div class="grid-2">
+						<div class="mini-card">
+							<h3>المخرجات المتوقعة</h3>
+							<ul>
+								<li>منصة ويب كاملة بواجهات مخصصة لكل دور.</li>
+								<li>تطبيق موبايل Android و iOS بنفس المنطق والصلاحيات.</li>
+								<li>لوحات تحكم لكل نوع مستخدم.</li>
+								<li>نظام إدارة المناهج والكورسات والخطط.</li>
+								<li>نظام مالي شامل للمدرسين والشركاء والطلاب والبنوك.</li>
+								<li>نظام شات داخلي لحظي ومنظم.</li>
+								<li>تكامل كامل مع الـ APIs والوسائط والملفات.</li>
+								<li>واجهة عربية RTL احترافية ومتجاوبة.</li>
+							</ul>
+						</div>
+						<div class="mini-card">
+							<h3>معايير القبول</h3>
+							<ul>
+								<li>كل دور يرى صفحاته وبياناته فقط حسب الصلاحيات.</li>
+								<li>تنفيذ دورة الطالب من التسجيل حتى الكورس والمهام والاختبارات.</li>
+								<li>تنفيذ دورة المدرس من عرض الحصص حتى تقييم المهام.</li>
+								<li>متابعة ولي الأمر للأبناء وطلب كورسات جديدة.</li>
+								<li>إدارة الحسابات المالية والتقارير من لوحة الإدارة.</li>
+								<li>عمل الشات بين المستخدمين وفق الصلاحيات المحددة.</li>
+								<li>عمل نسخة الموبايل على نفس البيانات والمنطق التشغيلي.</li>
+								<li>ظهور الرسائل والأخطاء والتنبيهات بشكل واضح.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="footer">
+			<div class="container">
+				<strong>الملف التعريفي لمنصة LMS المتكاملة</strong>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>
